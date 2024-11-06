@@ -1,102 +1,28 @@
 # Tax Calculator
-The "Tax Calculator" project aims to develop an application to calculate the income tax return of an employee. The application will take into account various inputs, such as employment income, other income, withholdings, social security payments, pension contributions, mortgage loans, donations, and education expenses for the year. With this information, you will calculate the taxed and untaxed income, the deductible costs, and finally determine the amount to be paid for income tax. This tool will make it easier for employees to calculate and submit their annual income tax return.
+El proyecto "Calculadora de Impuestos" tiene como objetivo desarrollar una aplicación para calcular la declaración del Impuesto sobre la Renta de un empleado. La solicitud tendrá en cuenta diversos insumos, como ingresos del trabajo, otros ingresos, retenciones, pagos de seguridad social, aportes a pensiones, préstamos hipotecarios, donaciones y gastos de educación del año. Con esta información calcularás los ingresos gravados y no gravados, los costos deducibles y finalmente determinarás el monto a pagar por concepto de impuesto a la renta. Esta herramienta facilitará a los empleados el cálculo y la presentación de su declaración anual del impuesto sobre la renta.
 
-## Characteristics
+## Datos necesarios para la ejecucion
+- Total de ingresos laborales en el año: Representa la suma acumulada de los salarios percibidos a lo largo de todo el año.
 
-- Automates the calculation of income tax, minimizing errors and saving time.
-- Allows entry of multiple sources of income and deductions.
-- Calculate deductions and exemptions to obtain the final tax to pay.
-- Generate detailed reports with a clear tax summary.
-- It has a simple interface to facilitate use by anyone.
-- It is updated according to current tax laws.
-- It is accessible from any device and protects the confidentiality of data.
+- Valor otros ingresos gravables: Comprende aquellos ingresos que, de acuerdo con la legislación colombiana, están sujetos a un porcentaje de impuestos. Esto incluye fuentes como loterías, negocios, inversiones, alquileres, entre otros.
 
- ## How Do I Run It?
- # Prerequisites
-Make sure you have Python installed on your system. No additional external dependencies are required to run the project.
+- Valor otros ingresos no gravables: Son aquellos que no están sujetos a un porcentaje de impuesto según la legislación. Ejemplos de estos ingresos incluyen subsidios, indemnizaciones, herencias, donaciones, entre otros.
 
- # Running the Program
-To run the program outside of the development environment:
+- Valor retencion en la fuente al año: Representa la cantidad total retenida en concepto de impuestos a lo largo del año.
 
-Navigate to the folder: Once you have cloned or downloaded the project, open the command prompt (cmd) or Anaconda Prompt, and navigate to the folder where you saved the project files. For example:
+- Pago créditos hipoteca en el año: Es un deducible que abarca todos los gastos relacionados con la vivienda, incluyendo seguros y préstamos hipotecarios.
 
-```bash
+- Valor donaciones en el año: Es una deducción que se refiere a las contribuciones que has realizado a lo largo del año en forma de donaciones.
 
- "cd C:\Users\\Desktop\Taxcalculator-main"
+- Gastos en educación en el año: Representan una deducción relacionada con los costos asociados a la educación durante el período anual.
 
-````
+## Datos resultantes de la ejecucion
+- Total de ingresos gravados: (Ingresos laborales + otros ingresos gravados + otros ingresos no gravables) – otros ingresos gravables.
+- Total ingresos no gravables: Todos los ingresos no gravables del año.
+- Total costos deducibles: pago seguridad social + aportes pensión en el año + pago créditos hipotecarios en el año + valor donaciones en al año + gastos educación en el año.
+- Valor a pagar por impuesto de renta: Se refiere a la cantidad total que debe abonarse como impuesto de renta.
+- Este monto está determinado por porcentajes variables que se definen en función de la cantidad total de ingresos gravables percibidos.
 
 
-Run the main script:
-
-```bash
-
-python scr/Console/Calculatorconsole.py
-
-```
-
-run interface
-
-# How Is It Made?
- ## Project Architecture
-The project is organized into two main folders:
-
-scr: Contains the application's source code.
-test: Contains unit tests to validate the functionality of the code.
-
-## Module Organization
---scr/console.py: Main file for user interaction. Collects user inputs and displays the results.
-
-
---scr/FuncionesDeCalculo.py: Contains the logic functions for tax calculation, including input validation and tax computation.
-
-
---scr/FuncionesDeEntradaySalida.py: Manages tax rates, deductions, and handles input/output operations.
-# Dependencies
-The project does not require external dependencies. It relies on Python's standard libraries.
-
-# Usage
-To run the unit tests from the test folder, use the following command:
-
-```bash
-
-
-python test/unit_tests.py
-
-```
-
-To run the main file, which launches the tax calculator console:
-
-```bash
-
-python scr/console.py
-
-```
-
-# Console use
-To run the user interface from the cd
-
-```bash
-
-
-cd C:\Users\\Desktop\Taxcalculator-main"
-```
-
-then
-
-```bash
-
-python scr/GUI/Gui.py
-
-```
-
-## System Requirements
-
-- Python 3.x instalado.
-
-## Members.
-
-- Juan Manuel García Gómez (jmgg1326)
-- Santiago Perez Jimenez (santti19perez)
-- Juan Felipe Ruiz Yepes (pipe0001)
-
+## ¿Quien hizo esto?
+- Edison Ospina Arroyave.
