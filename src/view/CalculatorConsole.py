@@ -1,7 +1,14 @@
 import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from TaxCalculator import CalculationFunctions, InputOutputFunctions, Database 
+sys.path.append("src")
+
+"""import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))"""
+
+from src.controller import Database
+from src.model import InputOutputFunctions
+from src.model import CalculationFunctions
+
+
 
 def show_menu():
     """Displays the options menu."""

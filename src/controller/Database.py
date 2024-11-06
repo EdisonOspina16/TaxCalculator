@@ -1,10 +1,10 @@
 import sys
 import os
-from psycopg import connect, OperationalError, DatabaseError
+from psycopg2 import connect, OperationalError, DatabaseError
 # Agregar la carpeta raíz del proyecto a la ruta de búsqueda
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
-from psycopg import connect
+from psycopg2 import connect
 from SecretConfig import DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME
 
 def connect_db():

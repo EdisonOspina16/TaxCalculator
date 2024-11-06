@@ -3,9 +3,9 @@ sys.path.append("src")
 sys.path.append("templates")
 
 from flask import Blueprint, request, render_template
-from model import TaxLogic
-from controller import ControllerRegistros
-from model.TaxLogic import calculateTax
+from model import Calculator
+from controller import Database
+from model.Calculator import calculate_income_tax, calculate_taxes
 from view.web import vista_usuario
 
 blueprint= Blueprint("vista_usuarios",__name__,"templates")
@@ -37,7 +37,7 @@ def calculate_fee(): #calcula pero no guarda
     donation_value_per_year = int(request.args["donation_value_per_year"])
     educational_expenses_per_year = int(request.args["educational_expenses_per_year"])
 
-    TaxInformation = TaxLogic.TaxInformation(
+    TaxInformation = Calculator.TaxInformation(
         id,
         total_labor_income_per_year,
         other_taxable_income_per_year,
@@ -46,7 +46,7 @@ def calculate_fee(): #calcula pero no guarda
         mortgage_loan_payment_per_year,
         donation_value_per_year,
         educational_expenses_per_year)
-    result = calculateTax(TaxInformation)
+    result = calculate_taxes(TaxInformation)
     return render_template("result_fee.html", tax = result, message = "Valor calculado correctamente")
 
 
@@ -61,7 +61,7 @@ def create_new_record():
     donation_value_per_year = int(request.args["donation_value_per_year"])
     educational_expenses_per_year = int(request.args["educational_expenses_per_year"])
 
-    TaxInformation = TaxLogic.TaxInformation(
+    TaxInformation = Calculator.TaxInformation(
         id,
         total_labor_income_per_year,
         other_taxable_income_per_year,

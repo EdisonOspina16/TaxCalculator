@@ -13,7 +13,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.popup import Popup
 
-from TaxCalculator.CalculationFunctions import (
+from model.CalculationFunctions import (
     calculate_taxable_income,
     calculate_withholding_tax,
     calculate_social_security_contribution,
