@@ -26,3 +26,4 @@ El proyecto "Calculadora de Impuestos" tiene como objetivo desarrollar una aplic
 
 ## ¿Quien hizo esto?
 - Edison Ospina Arroyave.
+- juan diego usuga
