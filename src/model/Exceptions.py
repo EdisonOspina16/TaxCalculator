@@ -1,3 +1,4 @@
+#7src/model/Exceptions.py
 class ZeroIncomeError(Exception):
     """Raised when the income is equal to zero."""
     def __init__(self, message="Income cannot be zero"):

@@ -1,3 +1,5 @@
+#src/model/InputOutputFunctions.py
+
 def request_parameter_input(message, data_type=float):
     """Requests data from the user and handles exceptions."""
     while True:
@@ -42,7 +44,9 @@ def show_how_to_use():
     except FileNotFoundError:
         print("The file 'how_to_use.txt' was not found in the 'resources' folder.")
 
-def tax_rate():
+_current_tax_rate = 0.25  # Default tax rate
+
+def get_tax_rate():
     """Returns the current tax rate."""
     return _current_tax_rate
 
@@ -50,6 +54,7 @@ def modify_tax_rate(new_rate):
     """Modifies the current tax rate."""
     global _current_tax_rate
     _current_tax_rate = new_rate
+
 
 def calculate_net_tax(gross_income, deductions, tax_rate, tax_credits):
     """Calculates net tax based on gross income, deductions, tax rate, and tax credits."""

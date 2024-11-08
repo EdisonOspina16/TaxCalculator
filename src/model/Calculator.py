@@ -4,55 +4,12 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 from src.controller import Database
-from src.model.InputOutputFunctions import tax_rate, request_input_data, display_information
-from model.CalculationFunctions import calculate_non_taxable_income
-from model.Exceptions import NonNumericDeductionError, ZeroIncomeError, InvalidDeductionError, InvalidPercentageError, NonNumericIncomeError, UserDontExist
-
-def request_parameter_input(message, default=None, data_type=float):
-    """Requests a parameter from the user and handles exceptions."""
-    while True:
-        data = input(message)
-        if data.upper() == "DEF":
-            return default
-        try:
-            data = data_type(data)
-            if data < 0:
-                print("The value cannot be negative. Please try again.")
-                continue
-            return data
-        except ValueError:
-            print(f"Invalid input. Please enter a{'n integer' if data_type is int else ''} number.")
-
-def modify_parameters():
-    """Allows the user to modify the global parameters of the tax calculator."""
-    global pension_contribution_rate, health_deduction_rate, education_deduction_rate, donation_deduction_rate
-    
-    print("\nModify parameters:")
-    
-    pension_contribution_rate = request_parameter_input("New pension contribution % (DEF to keep current): ", pension_contribution_rate)
-    health_deduction_rate = request_parameter_input("New health deduction % (DEF to keep current): ", health_deduction_rate)
-    education_deduction_rate = request_parameter_input("New education deduction % (DEF to keep current): ", education_deduction_rate)
-    donation_deduction_rate = request_parameter_input("New donation deduction % (DEF to keep current): ", donation_deduction_rate)
-    
-    print("Parameters modified successfully.")
-
-def calculate_income_tax():
-    """Calculates the income tax based on the entered data."""
-    (total_employment_income, other_income_value, withholding_tax_value, 
-    social_security_payments, pension_contributions, mortgage_payments, 
-    donations_value, education_expenses) = request_input_data()
-    
-    total_income = total_employment_income + other_income_value
-    total_taxable_income = total_income - (social_security_payments + pension_contributions)
-    total_non_taxable_income = calculate_non_taxable_income(total_income)
-    total_deductible_expenses = (donations_value * donation_deduction_rate +
-                                 education_expenses * education_deduction_rate +
-                                 mortgage_payments)
-    
-    taxable_base = total_taxable_income - total_deductible_expenses
-    tax_to_pay = calculate_tax_amount(taxable_base, withholding_tax_value)
-    
-    display_information(total_taxable_income, total_non_taxable_income, total_deductible_expenses, tax_to_pay)
+from src.model.InputOutputFunctions import tax_rate
+from src.model.CalculationFunctions import calculate_non_taxable_income
+from src.model.Exceptions import (
+    NonNumericDeductionError, ZeroIncomeError, InvalidDeductionError,
+    InvalidPercentageError, NonNumericIncomeError, UserDontExist
+)
 
 def calculate_taxes(income, deduction, tax_percentage):
     try:
@@ -75,8 +32,8 @@ def calculate_taxes(income, deduction, tax_percentage):
         print(f"Error: {e}")
 
 def search_user(user_id):
-    """Serch user by ID."""
+    """Search user by ID."""
     user = Database.get_user_by_id(user_id)
     if user is None:
         raise UserDontExist
-    return user 
+    return user

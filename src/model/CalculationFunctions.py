@@ -1,3 +1,5 @@
+#src/model/CalculationFunctions.py
+
 # Global Variables
 withholding_tax_rate = 0.035  # Withholding tax percentage (example)
 social_security_rate = 0.04  # Social security percentage

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Historial de Cálculos{% endblock %}
+
+{% block content %}
+    <h2>Historial de Cálculos</h2>
+    {% if calculations %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID de Cálculo</th>
+                    <th>Ingreso Bruto</th>
+                    <th>Deducciones</th>
+                    <th>Créditos Fiscales</th>
+                    <th>Impuesto Pagado</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for calc in calculations %}
+                    <tr>
+                        <td>{{ calc[0] }}</td>
+                        <td>${{ calc[1] }}</td>
+                        <td>${{ calc[2] }}</td>
+                        <td>${{ calc[3] }}</td>
+                        <td>${{ calc[4] }}</td>
+                        <td>{{ calc[5] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No se encontraron cálculos para este usuario.</p>
+    {% endif %}
+{% endblock %}

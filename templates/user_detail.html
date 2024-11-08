@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Detalle de Usuario{% endblock %}
+
+{% block content %}
+    <h2>Detalle del Usuario</h2>
+    {% if user %}
+        <p><strong>ID de Usuario:</strong> {{ user[0] }}</p>
+        <p><strong>Nombre de Usuario:</strong> {{ user[1] }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ user[2] }}</p>
+    {% else %}
+        <p>No se encontró el usuario.</p>
+    {% endif %}
+{% endblock %}

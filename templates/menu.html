@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Menú Principal{% endblock %}
+
+{% block content %}
+    <h2>Menú</h2>
+    <ul>
+        <li><a href="{{ url_for('register_user') }}">Registrar Usuario</a></li>
+        <li><a href="{{ url_for('calculate_taxes') }}">Calcular Impuestos</a></li>
+        <li><a href="{{ url_for('view_calculation_history', user_id=1) }}">Ver Historial de Cálculos</a></li>
+        <!-- Agrega más opciones según sea necesario -->
+    </ul>
+{% endblock %}
